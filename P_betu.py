@@ -1,9 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from magyarteknoc import rajzoló
+from magyarteknoc import *
 
-rajzoló.nagyíts(4)
+rajzoló.nagyíts(6)
 rajzoló.menj_előre(12)
 rajzoló.fordulj_jobbra()
 rajzoló.menj_előre(5)
