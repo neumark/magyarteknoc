@@ -3,6 +3,7 @@
 
 from magyarteknoc import rajzoló
 
+rajzoló.nagyíts(4)
 rajzoló.menj_előre(12)
 rajzoló.fordulj_jobbra()
 rajzoló.menj_előre(5)

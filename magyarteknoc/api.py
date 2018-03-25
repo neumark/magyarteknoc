@@ -15,16 +15,20 @@ class IRenderBackend(object):
 class MagyarTeknőc(object):
     def __init__(self, render_backends):
         self.render_backends = render_backends
+        self.scale = 1
         self.rajzolj()
         
     def rajzolj(self, ide='papír'):
         self.current_backend = self.render_backends[ide]
 
     def menj_előre(self, hány_lépést=1):
-        self.current_backend.forward(hány_lépést)
+        self.current_backend.forward(hány_lépést * self.scale)
 
     def fordulj_jobbra(self, fok=90):
         self.current_backend.right(fok)
 
     def fordulj_balra(self, fok=90):
         self.current_backend.left(fok)
+
+    def nagyíts(self, nagyítás=2):
+        self.scale = nagyítás

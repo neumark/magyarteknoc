@@ -5,7 +5,10 @@ __all__ = ['rajzoló']
 from .api import MagyarTeknőc
 from . import render
 
-rajzoló = MagyarTeknőc({
-    'papír': render.turtle_backend(),
-    'minecraft': render.mc_backend()
-    })
+backends = {'papír': render.turtle_backend()}
+
+if render.mc_backend is not None:
+    backends['minecraft'] = render.mc_backend()
+
+
+rajzoló = MagyarTeknőc(backends)
