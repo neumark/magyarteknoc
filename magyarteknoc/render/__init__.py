@@ -1,5 +1,5 @@
-from .turtle import RenderBackend as turtle_backend
+from .turtle import TurtleRenderBackend
 try:
-    from .mc import RenderBackend as mc_backend
+    from .mc import MCRenderBackend
 except ModuleNotFoundError:
-    mc_backend = None
+    MCRenderBackend = None
