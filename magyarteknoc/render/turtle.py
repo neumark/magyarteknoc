@@ -3,6 +3,7 @@ __all__ = ['TurtleRenderBackend']
 
 from .. import api
 import turtle
+from turtle import *
 
 class TurtleRenderBackend(api.BaseBackend):
 
@@ -17,3 +18,12 @@ class TurtleRenderBackend(api.BaseBackend):
 
     def left(self, angle):
         turtle.left(angle)
+
+    def set_color(self, color_value):
+        color(color_value)
+
+    def goto(self, x, y):
+        turtle.penup()
+        turtle.goto(x,y)
+        turtle.pendown()
+

@@ -14,11 +14,23 @@ class MCRenderBackend(api.BaseBackend):
     def __init__(self):
         self.t = MyTurtle()
         self.t.pendelay(0)
-        self.t.angle(0)  # align to grid
-        self.t.mc.postToChat("most rajzolok!")
+        self.scale = 1
+        #self.t.angle(0)  # align to grid
+        #self.t.mc.postToChat("most rajzolok!")
+        #self.t.positionIn()
+        #self.t.gridalign()
+        #self.t.verticalangle(0)
+
+    def get_position(self):
+        return [self.t.position.x, self.t.position.y, self.t.position.z]
 
     def forward(self, length=1):
         self.t.go(length * self.scale)
+
+    def goto(self, x, y, z):
+        self.t.penup()
+        self.t.goto(x, y, z)
+        self.t.pendown()
 
     def right(self, angle):
         self.t.right(angle)
@@ -44,12 +56,12 @@ class MCRenderBackend(api.BaseBackend):
 
     def brick(self, width, height, depth):
         self.t.push()
-        self._rect(depth, width, block.WOOL_ORANGE)
+        self._rect(depth, width, block.STONE_BRICK)
         self.t.roll(-90)
-        self._rect(depth, height, block.WOOL_LIGHT_BLUE)
+        self._rect(depth, height, block.STONE_BRICK)
         self.t.roll(90)
         self.t.pitch(90)
-        self._rect(height, width, block.WOOL_BLACK)
+        self._rect(height, width, block.STONE_BRICK)
         self.t.pitch(-90)
         # back in original position
 
@@ -64,15 +76,15 @@ class MCRenderBackend(api.BaseBackend):
         self.t.pitch(-90)
 
         self.t.pendown()
-        self._rect(height, width, block.WOOL_RED)
+        self._rect(height, width, block.STONE_BRICK)
         self.t.roll(-90)
-        self._rect(height, depth, block.WOOL_GREEN)
+        self._rect(height, depth, block.STONE_BRICK)
         self.t.roll(90)
         self.t.pitch(90)
-        self._rect(depth, width, block.WOOL_BROWN)
+        self._rect(depth, width, block.STONE_BRICK)
         self.t.pop()
 
-        self._jump_ahead(depth)
+        #self._jump_ahead(depth)
 
     def _jump_ahead(self, block_count):
         self.t.penup()
